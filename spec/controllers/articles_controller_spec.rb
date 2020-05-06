@@ -27,5 +27,13 @@ describe ArticlesController do
 			expect(json.first['id']).to eq(newer_article.id)
 			expect(json.last['id']).to eq(old_article.id)
 		end
+
+		it 'should paginate results' do
+			create_list :article, 3
+			get :index, params: { page: 2, per_page: 1 }
+			expect(json.length).to eq 1
+			expected_article = Article.recent.second.id.to_s
+			expect(json.first['id'].to_s).to eq(expected_article)
+		end
 	end
 end

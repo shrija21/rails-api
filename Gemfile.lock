@@ -81,6 +81,18 @@ GEM
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jsonapi-renderer (0.2.2)
+    kaminari (1.2.0)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.0)
+      kaminari-activerecord (= 1.2.0)
+      kaminari-core (= 1.2.0)
+    kaminari-actionview (1.2.0)
+      actionview
+      kaminari-core (= 1.2.0)
+    kaminari-activerecord (1.2.0)
+      activerecord
+      kaminari-core (= 1.2.0)
+    kaminari-core (1.2.0)
     loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -173,6 +185,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   factory_bot_rails
+  kaminari
   mysql2 (>= 0.4.4)
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
