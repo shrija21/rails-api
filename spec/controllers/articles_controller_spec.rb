@@ -9,18 +9,23 @@ describe ArticlesController do
 		end
 
 		it 'should return proper json' do
-			articles = create_list :article, 2
+			create_list :article, 2
 			subject
-			# json = JSON.parse(response.body)
-			# p json
-			# expect(json.length).to eq(2)
-			articles.each_with_index do |article, index|
+			Article.recent.each_with_index do |article, index|
 				expect(json[index]).to include({
 					"title"=> article.title, 
 					"content"=> article.content, 
 					"slug"=> article.slug
 				})
 			end
+		end
+
+		it 'should return articles in the proper order' do
+			old_article = create :article
+			newer_article = create :article
+			subject
+			expect(json.first['id']).to eq(newer_article.id)
+			expect(json.last['id']).to eq(old_article.id)
 		end
 	end
 end
